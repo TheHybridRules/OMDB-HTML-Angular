@@ -1,0 +1,71 @@
+<div ng-controller="searchController" layout="column" style="height:100%"> 
+
+<!--Toolbar to display name-->
+	<md-toolbar class="md-dark">
+		<div class="md-toolbar-tools">
+			<h2 class="md-flex">Film Search</h2>
+		</div>
+	</md-toolbar>
+	
+	<!--Search bar container-->
+	<div layout-gt-sm="row" class="layout-padding">
+		<md-input-container class="md-block">
+			<label>Title</label>
+			<input type="text" ng-model="searchText">
+		</md-input-container class="md-block">
+		<md-input-container>
+			<label>Year</label>
+			<input type="number" ng-model="yearText" md-maxlength="4">
+		</md-input-container>
+		<div>
+			<md-button class="md-raised md-warn" ng-disabled="!searchText " ng-click="searchFilm()">
+				Search
+			</md-button>
+		</div>
+	</div>
+	
+	<!--Small header for results-->
+	<md-subheader ng-if="response.data.Response == 'True'" class="md-no-sticky">
+		Results: {{totalFilms}}
+	</md-subheader>
+	
+	<md-divider ></md-divider>	
+	
+	<!--Error displayed if there are no results-->
+	<div ng-if="response.data.Response == 'False'" layout="center">
+		<h3>No Results. Please try another search. </h3>
+	</div>
+	
+	<!--Content from the results are displayed here-->
+	<md-content ng-if="response.data.Response == 'True'">	
+		<md-list flex>			
+			<md-list-item ng-repeat="item in response.data.Search" ng-click="getMovie(item.imdbID)">			
+				<div layout="row">
+					<div flex>
+						<img ng-src="{{item.Poster}}" style="width:100px; height:150px; padding-right: 20px;"></img>
+					</div>
+				</div>				
+				<div layout="column">
+					<div flex>
+						<div><strong>Title:</strong> {{item.Title}}</div>
+						<div><strong>Year Released:</strong> {{item.Year }}</div>
+						<div><strong>IMDB ID:</strong> {{item.imdbID }}</div>
+						<div ng-if="item.Type == 'movie'">
+							<i class="fa fa-film" aria-hidden="true"></i>
+							Movie
+						</div>
+						<div ng-if="item.Type == 'series'">
+							<i class="fa fa-television" aria-hidden="true"></i>
+							Series
+						</div>	
+						<div ng-if="item.Type == 'episode'">
+							<i class="fa fa-file-video-o" aria-hidden="true"></i>
+							Episode
+						</div>					
+					</div>
+				</div>
+				<md-divider ></md-divider>	
+			</md-list-item>
+		</md-list flex>
+	</md-content>		
+</div>

@@ -1,0 +1,43 @@
+<md-toolbar class="md-dark">
+<div layout="row">
+		<span flex="85">
+			<h1 style="margin:0px; padding-left: 10px; padding-top: 10px;">{{details.data.Title}}</h1>
+		</span>
+		<span flex="10">
+			<md-button style="padding-top: 0px; margin-bottom: 0px; margin-top: 10px" class="md-raised md-warn" ng-click="goBack()">
+			Go back to search
+			</md-button>
+		</span>
+		</div>
+</md-toolbar>
+
+<md-card theme="forest" class="container">  
+
+	<div layout="row">
+			  <div flex="50">
+				<img src="{{details.data.Poster}}" class="thumbnail">
+			  </div>
+			  <div flex="50">
+				<h2 align="center">{{details.data.Title}}</h2>
+				<ul>
+				  <li><strong>Genre:</strong> {{details.data.Genre}} </li>
+				  <li><strong>Released:</strong> {{details.data.Released}}</li>
+				  <li><strong>Rated:</strong> {{details.data.Rated}}</li>
+				  <li><strong>Runtime:</strong> {{details.data.Runtime}}</li>
+				  <li><strong>Actors:</strong> {{details.data.Actors}}</li>
+				  <li><strong>Director:</strong> {{details.data.Director}}</li>
+				  <li><strong>Writer:</strong> {{details.data.Writer}}</li>			  
+				  <li><strong>Awards:</strong> {{details.data.Awards}}</li>
+				  <li><strong>Box Office:</strong> {{details.data.BoxOffice}}</li>
+				  <li><strong>Country:</strong> {{details.data.Country}}</li>
+				  <li><strong>IMDB ID:</strong> {{details.data.imdbID}}</li>
+				  <li><strong>IMDB Rating:</strong> {{details.data.imdbRating}}</li>
+				  <li><strong>IMDB Votes:</strong> {{details.data.imdbVotes}}</li>
+				  <li class="list-group-item"><strong>IMDB Rating:</strong> {{details.data.imdbRating}}</li>
+				</ul>
+				<div style="margin-left: 10px; margin-right: 10px;"><strong>Plot:</strong>
+					<div>{{details.data.Plot}}</div>
+				</div>
+			  </div>  
+		</div>
+</md-card>
